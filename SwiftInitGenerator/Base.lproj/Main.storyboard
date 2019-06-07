@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,7 +674,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="SwiftInitGenerator" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -703,11 +704,80 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="SwiftInitGenerator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCi-w2-pjg">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="270"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="rqJ-XQ-32Y">
+                                    <rect key="frame" x="0.0" y="0.0" width="225" height="270"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="t9Y-CK-Pek">
+                                            <rect key="frame" x="0.0" y="0.0" width="225" height="270"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="225" height="270"/>
+                                            <size key="maxSize" width="240" height="10000000"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="82m-4a-bld">
+                                    <rect key="frame" x="225" y="0.0" width="15" height="270"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xE2-6B-3LH">
+                                <rect key="frame" x="240" y="0.0" width="240" height="270"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="plq-ss-Kgc">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="270"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="OqW-UD-0l2">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="270"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="240" height="270"/>
+                                            <size key="maxSize" width="240" height="10000000"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="V7m-s8-nZh">
+                                    <rect key="frame" x="224" y="0.0" width="16" height="270"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Knn-I2-rGh">
+                                <rect key="frame" x="238" y="0.0" width="5" height="270"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="BCd-dk-YwD"/>
+                                </constraints>
+                            </box>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Knn-I2-rGh" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="1SV-Nh-hli"/>
+                            <constraint firstItem="nCi-w2-pjg" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="7Bf-1x-Mm6"/>
+                            <constraint firstItem="nCi-w2-pjg" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" multiplier="1:2" id="7u0-j0-SBW"/>
+                            <constraint firstItem="nCi-w2-pjg" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="IIT-L1-UiN"/>
+                            <constraint firstItem="Knn-I2-rGh" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="Vgl-yU-0Qw"/>
+                            <constraint firstAttribute="trailing" secondItem="xE2-6B-3LH" secondAttribute="trailing" id="Y1W-lO-Uld"/>
+                            <constraint firstItem="Knn-I2-rGh" firstAttribute="height" secondItem="m2S-Jp-Qdl" secondAttribute="height" id="byu-9A-xuV"/>
+                            <constraint firstItem="xE2-6B-3LH" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="dRv-To-ZYQ"/>
+                            <constraint firstItem="nCi-w2-pjg" firstAttribute="height" secondItem="m2S-Jp-Qdl" secondAttribute="height" id="dnr-WR-oPt"/>
+                            <constraint firstItem="xE2-6B-3LH" firstAttribute="height" secondItem="m2S-Jp-Qdl" secondAttribute="height" id="nyz-Oz-g0S"/>
+                            <constraint firstItem="xE2-6B-3LH" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" multiplier="1:2" id="pAk-OT-5vo"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="leftTextView" destination="t9Y-CK-Pek" id="9fJ-Pa-DdU"/>
+                        <outlet property="rightTextView" destination="OqW-UD-0l2" id="aIL-A3-Mgk"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
