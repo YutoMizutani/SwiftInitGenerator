@@ -20,13 +20,41 @@ public struct SwiftInitGenerator {
 }
 
 typealias Settings = InitGeneratorSettings
-public struct InitGeneratorSettings {
+public enum InitGeneratorSettings: String, CaseIterable {
     public static let lineString: String = "\n"
 
-    /// let
-    static let letText: String = "let"
-    /// var
-    static let variableText: String = "var"
+    case privateLet = "private let"
+    case privateVar = "private var"
+    case filePrivateLet = "fileprivate let"
+    case filePrivateVar = "fileprivate var"
+    case `let`
+    case `var`
+    case publicLet = "public let"
+    case publicVar = "public var"
+    case openLet = "open let"
+    case openVar = "open var"
+
+    case privateStaticLet = "private static let"
+    case privateStaticVar = "private static var"
+    case filePrivateStaticLet = "fileprivate static let"
+    case filePrivateStaticVar = "fileprivate static var"
+    case staticLet = "static let"
+    case staticVar = "static var"
+    case publicStaticLet = "public static let"
+    case publicStaticVar = "public static var"
+    case openStaticLet = "open static let"
+    case openStaticVar = "open static var"
+
+    case privateClassLet = "private class let"
+    case privateClassVar = "private class var"
+    case filePrivateClassLet = "fileprivate class let"
+    case filePrivateClassVar = "fileprivate class var"
+    case classLet = "class let"
+    case classVar = "class var"
+    case publicClassLet = "public class let"
+    case publicClassVar = "public class var"
+    case openClassLet = "open class let"
+    case openClassVar = "open class var"
 }
 
 public struct StackContent {
@@ -45,33 +73,34 @@ public extension String {
     func separatedLines() -> [String] {
         return components(separatedBy: Settings.lineString)
             .map { String($0) }
+            .filter { !$0.isEmpty }
     }
 
-    func decisionVariable() -> Bool {
+    func getVariable() -> String {
         let removedSpaces = replacingOccurrences(of: " ", with: "")
-        if removedSpaces.count >= Settings.letText.count + 2 {
-            if removedSpaces.hasPrefix(Settings.letText) {
-                return true
+        for prefix in Settings.allCases
+            .map({ $0.rawValue.replacingOccurrences(of: " ", with: "") }) {
+            if removedSpaces.count >= prefix.count + 2 {
+                if removedSpaces.hasPrefix(prefix) {
+                    return String(removedSpaces.dropFirst(prefix.count))
+                }
             }
         }
-        if removedSpaces.count >= Settings.variableText.count + 2 {
-            if removedSpaces.hasPrefix(Settings.variableText) {
-                return true
-            }
-        }
-        return false
+        return ""
     }
 
     func translateStackContent() -> StackContent? {
-        guard decisionVariable() else { return nil }
-        let splitted = split(separator: " ")
-        guard splitted.count == 3 && splitted[1].hasSuffix(":") else { return nil }
-        let name: String = String(splitted[1]).removedLast(1)
-        let type: String = String(splitted[2])
+        let variableName = getVariable()
+        guard !variableName.isEmpty else { return nil }
+        let splitted = variableName.split(separator: ":", maxSplits: 1)
+        guard splitted.count == 2 else { return nil }
+        let name: String = String(splitted[0])
+        let type: String = String(splitted[1])
         return StackContent(name: name, type: type)
     }
 
     func removedLast(_ i: Int = 1) -> String {
+        guard count >= i else { return "" }
         return String(prefix(count - i))
     }
 }
